@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joke-deployment
+spec:
+  # This is our desired state, we want 1 copy(Pod) running
+
+  replicas: 3
+  selector:
+    matchLabels:
+      app: joke
+
+
+  template:
+    metadata:
+      labels:
+        app: joke
+    spec:
+      containers:
+      - name: joke-container
+        image: joke-app:2.0
